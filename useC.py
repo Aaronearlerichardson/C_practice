@@ -1,2 +1,3 @@
 import spam
-print(spam.system('ls -l'))
+print(spam.__name__)
+print(spam.add(1, 2))
