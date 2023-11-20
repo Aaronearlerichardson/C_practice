@@ -4,15 +4,26 @@
 
 PyObject *add(PyObject *self, PyObject *args)
 {
-    int a, b;
-    if (!PyArg_ParseTuple(args, "ii", &a, &b))
+    double a, b;
+    if (!PyArg_ParseTuple(args, "dd", &a, &b))
         return NULL;
-    return PyLong_FromLong(a + b);
+    return PyFloat_FromDouble(a + b);
 };
+
+//static PyObject *system(PyObject *self, PyObject *args)
+//{
+//    const char *command;
+//    int sts;
+//
+//    if (!PyArg_ParseTuple(args, "s", &command))
+//        return NULL;
+//    sts = system(command);
+//    return PyLong_FromLong(sts);
+//};
 
 static PyMethodDef SpamMethods[] = {
     {"add", add, METH_VARARGS, "add two numbers"},
-    //{"system", system, METH_VARARGS, "execute a shell command"},
+//    {"system", system, METH_VARARGS, "execute a shell command"},
     {NULL, NULL, 0, NULL}
 };
 
@@ -28,14 +39,3 @@ PyMODINIT_FUNC PyInit_spam(){
     printf("spam module imported\n");
     return PyModule_Create(&spam);
 }
-
-//PyObject *system(PyObject *self, PyObject *args)
-//{
-//    const char *command;
-//    int sts;
-//
-//    if (!PyArg_ParseTuple(args, "s", &command))
-//        return NULL;
-//    sts = system(command);
-//    return PyLong_FromLong(sts);
-//};
