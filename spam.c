@@ -1,4 +1,5 @@
 #define PY_SSIZE_T_CLEAN
+#include <numpy/arrayobject.h>
 #include <Python.h>
 #include <stdio.h>
 
